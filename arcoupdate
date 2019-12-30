@@ -72,11 +72,10 @@ housekeeping() {
     check_exit_status
 }
 
-show scripts to stay rolling
+# Show scripts to stay rolling
 stay_rolling() {
 
     cd "~/.bin/stay-rolling" && ls;
-    check_exit_status
 }
 
 leave() {
