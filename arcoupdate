@@ -72,12 +72,6 @@ housekeeping() {
     check_exit_status
 }
 
-# Show scripts to stay rolling
-stay_rolling() {
-
-    cd "$HOME/.bin/stay-rolling" && ls;
-}
-
 leave() {
 
     echo
@@ -85,6 +79,7 @@ leave() {
     echo "- ArcoLinux has been updated! -"
     echo "-------------------------------"
     echo
+    cd "$HOME/.bin/stay-rolling" && ls;
     exit
 }
 
@@ -95,5 +90,4 @@ fix_bashrc
 copy_over_newest_bashrc
 aur_update
 housekeeping
-stay_rolling
 leave
