@@ -75,7 +75,7 @@ housekeeping() {
 # Show scripts to stay rolling
 stay_rolling() {
 
-    cd "~/.bin/stay-rolling" && ls;
+    cd "$HOME/.bin/stay-rolling" && ls;
 }
 
 leave() {
