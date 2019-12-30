@@ -1,6 +1,7 @@
 #!/bin/bash
-# My first script
+# Update Arco Linux
 
+# Make sure each command executes properly
 check_exit_status() {
 
     if ! check_exit_status
@@ -29,39 +30,52 @@ greeting() {
     echo
 }
 
+# Download and install all Arch Linux and ArcoLinux packages
 general_update() {
 
     sudo update -y;
     check_exit_status
 }
 
+# Copy/paste all config files from /etc/skel to your home directory
 skel() {
 
     skel;
     check_exit_status
 }
 
+# Put the fancy bash promt back after updating
 fix_bashrc() {
 
     echo "source ~/.fancy-bash-promt.sh" >> ~/.bashrc-latest
     check_exit_status
 }
 
+# Copy over all new bashrc changes, including fix_bashrc
 copy_over_newest_bashrc() {
 
     cb;
     check_exit_status
 }
 
+# Now update the rest – Only AUR packages will now be updated
 aur_update() {
 
     sudo pksyua -y;
     check_exit_status
 }
 
+# Perform the maintenance and clean-up duties, remove orphaned files to keep the system running optimally
 housekeeping() {
 
     sudo cleanup -y;
+    check_exit_status
+}
+
+show scripts to stay rolling
+stay_rolling() {
+
+    cd "~/.bin/stay-rolling" && ls;
     check_exit_status
 }
 
@@ -82,4 +96,5 @@ fix_bashrc
 copy_over_newest_bashrc
 aur_update
 housekeeping
+stay_rolling
 leave
