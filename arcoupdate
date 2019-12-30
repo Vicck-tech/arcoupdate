@@ -42,7 +42,7 @@ function mirror() {
 function general_update() {
 
 	echo "Updating Arch & Arco."
-    sudo pacman -Syyu -y;
+    sudo pacman -Syyu --noconfirm;
     check_exit_status
 }
 
@@ -50,7 +50,7 @@ function general_update() {
 function skel() {
 
 	echo "Running Skel."
-    'cp -rf /etc/skel/* ~';
+    cp -rf /etc/skel/. ~;
     check_exit_status
 }
 
@@ -65,7 +65,7 @@ function fix_bashrc() {
 # Copy over all new bashrc changes, including fix_bashrc
 function copy_over_newest_bashrc() {
 
-    'cp ~/.bashrc-latest ~/.bashrc && source ~/.bashrc && sudo cp /etc/skel/.bashrc-latest /etc/skel/.bashrc';
+    cp ~/.bashrc-latest ~/.bashrc && source ~/.bashrc && sudo cp /etc/skel/.bashrc-latest /etc/skel/.bashrc;
     check_exit_status
 }
 
@@ -81,7 +81,7 @@ function aur_update() {
 function housekeeping() {
 
 	echo "Cleaning up."
-    sudo pacman -Rns $(pacman -Qtdq) -y;
+    sudo pacman -Rns $(pacman -Qtdq) --noconfirm;
     check_exit_status
 }
 
