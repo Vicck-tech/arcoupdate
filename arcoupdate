@@ -1,0 +1,85 @@
+#!/bin/bash
+# My first script
+
+check_exit_status() {
+
+    if ! check_exit_status
+    then
+        echo
+        echo "Success"
+        echo
+    else
+        echo
+        echo "[ERROR] Process Failed!"
+        echo
+		
+        read -r -p "The last command exited with an error. Exit script? (yes/no) " answer
+
+        if [ "$answer" == "yes" ]
+        then
+            exit 1
+        fi
+    fi
+}
+
+greeting() {
+
+    echo
+    echo "Hello, $USER. Let's update your ArcoLinux."
+    echo
+}
+
+general_update() {
+
+    sudo update -y;
+    check_exit_status
+}
+
+skel() {
+
+    skel;
+    check_exit_status
+}
+
+fix_bashrc() {
+
+    echo "source ~/.fancy-bash-promt.sh" >> ~/.bashrc-latest
+    check_exit_status
+}
+
+copy_over_newest_bashrc() {
+
+    cb;
+    check_exit_status
+}
+
+aur_update() {
+
+    sudo pksyua -y;
+    check_exit_status
+}
+
+housekeeping() {
+
+    sudo cleanup -y;
+    check_exit_status
+}
+
+leave() {
+
+    echo
+    echo "-------------------------------"
+    echo "- ArcoLinux has been updated! -"
+    echo "-------------------------------"
+    echo
+    exit
+}
+
+greeting
+general_update
+skel
+fix_bashrc
+copy_over_newest_bashrc
+aur_update
+housekeeping
+leave
