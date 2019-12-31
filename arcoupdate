@@ -1,5 +1,5 @@
 #!/bin/bash
-# Update Arco Linux
+# Update script for ArcoLinux
 
 # Make sure each command executes properly
 check_exit_status() {
