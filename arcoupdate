@@ -11,10 +11,10 @@ check_exit_status() {
 		echo
 	else
 		echo
-		echo "[ERROR] Process Failed!"
+		echo "[ERROR] Update Failed! Check the errors and try again"
 		echo
 		
-		read -p "The last command exited with an error. Exit script? (yes/no) " answer
+		read -p "The last command exited with an error. Exit script? (y/n) " answer
 
             if [ "$answer" == "y" ]
             then
@@ -25,12 +25,12 @@ check_exit_status() {
 
 greeting() {
 
-    echo
-    echo "Hello, $USER. Let's update your ArcoLinux."
-    echo
+	echo
+	echo "Hello, $USER. Let's update your ArcoLinux."
+	echo
 }
 
-# search for the fastest mirrors
+# searching for the fastest mirrors
 function mirror() {
 
 	echo "Updating your Mirrors."
@@ -38,67 +38,73 @@ function mirror() {
 	check_exit_status
 }
 
-# Download and install all Arch Linux and ArcoLinux packages
+# Downloading and installing all Arch Linux and ArcoLinux packages
 function general_update() {
 
 	echo "Updating Arch & Arco."
-    sudo pacman -Syyu --noconfirm;
-    check_exit_status
+	sudo pacman -Syyu --noconfirm;
+	check_exit_status
 }
 
 # Copy/paste all config files from /etc/skel to your home directory
 function skel() {
 
 	echo "Running Skel."
-    cp -rf /etc/skel/. ~;
-    check_exit_status
+	cp -rf /etc/skel/. ~;
+	check_exit_status
 }
 
 # Put the fancy bash promt back after updating
 function fix_bashrc() {
 
 	echo "Putting Bashrc back together."
-    echo "source ~/.fancy-bash-promt.sh" >> ~/.bashrc-latest
-    check_exit_status
+	echo "source ~/.fancy-bash-promt.sh" >> ~/.bashrc-latest
+	check_exit_status
 }
 
 # Copy over all new bashrc changes, including fix_bashrc
 function copy_over_newest_bashrc() {
 
-    cp ~/.bashrc-latest ~/.bashrc && source ~/.bashrc && sudo cp /etc/skel/.bashrc-latest /etc/skel/.bashrc;
-    check_exit_status
+	cp ~/.bashrc-latest ~/.bashrc && source ~/.bashrc && sudo cp /etc/skel/.bashrc-latest /etc/skel/.bashrc;
+	check_exit_status
 }
 
 # Now update the rest – Only AUR packages will now be updated
 function aur_update() {
 
 	echo "Updating the AUR."
-    yay -Syu --noconfirm;
-    check_exit_status
+	yay -Syu --noconfirm;
+	check_exit_status
 }
 
 # Perform the maintenance and clean-up duties, remove orphaned files to keep the system running optimally
 function housekeeping() {
 
 	echo "Cleaning up."
-    sudo pacman -Rns $(pacman -Qtdq) --noconfirm;
-#    check_exit_status
+	sudo pacman -Rns $(pacman -Qtdq) --noconfirm;
 }
 
 function leave() {
 
-    echo
-    echo "-------------------------------"
-    echo "- ArcoLinux has been updated! -"
-    echo "-------------------------------"
-    echo
-
-# Stay Rolling
-function Stay_Rolling() {
-
-	echo "Now Stay Rolling.";
-	cd $HOME/.bin/stay-rolling;
-	ls
+	echo
+	echo "-------------------------------------"
+	echo "---- ArcoLinux has been updated! ----"
+	echo "-------------------------------------"
+	echo
+	echo "For more info on Arcolinux visit:"
+	echo "https://arcolinux.info/"
+	echo "https://arcolinux.com/"
+	echo "https://arcolinuxb.com/"
+	echo "https://arcolinuxd.com/"
+	echo "https://arcolinuxiso.com/"
+	echo
+	echo "Now Stay Rolling."
+	echo
+	echo
+	echo "Type: cd "$HOME/.bin/stay-rolling" && ls"
+	echo
+	echo "to run the latest and stay rolling."
+	echo
 	exit
 }
 
@@ -111,4 +117,3 @@ copy_over_newest_bashrc
 aur_update
 housekeeping
 leave
-Stay_Rolling
