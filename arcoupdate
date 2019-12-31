@@ -82,7 +82,7 @@ function housekeeping() {
 
 	echo "Cleaning up."
     sudo pacman -Rns $(pacman -Qtdq) --noconfirm;
-    check_exit_status
+#    check_exit_status
 }
 
 function leave() {
@@ -92,9 +92,14 @@ function leave() {
     echo "- ArcoLinux has been updated! -"
     echo "-------------------------------"
     echo
-    echo "Now Stay Rolling."
-    cd "$HOME/.bin/stay-rolling" && ls;
-    exit
+
+# Stay Rolling
+function Stay_Rolling() {
+
+	echo "Now Stay Rolling.";
+	cd $HOME/.bin/stay-rolling;
+	ls
+	exit
 }
 
 greeting
@@ -106,3 +111,4 @@ copy_over_newest_bashrc
 aur_update
 housekeeping
 leave
+Stay_Rolling
