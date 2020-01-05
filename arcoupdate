@@ -25,12 +25,7 @@ check_exit_status() {
 
 greeting() {
 
-	echo o        o
-	echo oo   ooooo
-	echo  o     o
-	echo  oo   oo
-	echo    ooo
-	echo     o
+	echo 
 	echo "Hello, $USER. Let's update your ArcoLinux."
 	echo
 }
