@@ -1,11 +1,5 @@
 #!/bin/sh
 
-##	I found this script from Chris Titus Tech
-##	Found here:
-##	https://github.com/ChrisTitusTech/scripts/blob/master/fancy-bash-promt.sh
-##	
-##	It has been edited to reflect my color choices ~Vicck-tech
-##
 ##	+-----------------------------------+-----------------------------------+
 ##	|                                                                       |
 ##	|                            FANCY BASH PROMT                           |
