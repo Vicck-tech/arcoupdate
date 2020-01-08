@@ -23,7 +23,7 @@ check_exit_status() {
 	fi
 }
 
-greeting() {
+function greeting() {
 
 	echo 
 	echo "Hello, $USER. Let's update your ArcoLinux."
@@ -79,12 +79,20 @@ function aur_update() {
 
 # Perform the maintenance and clean-up duties, remove orphaned files to keep the system running optimally
 function housekeeping() {
+	
+		echo
+		read -p "Are you ready to clean up? (y/n) " answer
 
-	echo "Cleaning up."
-	sudo rm -rf /usr/share/backgrounds/arcolinux
-	sudo rm -rf /usr/share/backgrounds/gnome
-	sudo pacman -Rns $(pacman -Qtdq) --noconfirm;
+            if [ "$answer" == "y" ]
+            then
+                echo "Cleaning up."
+		sudo rm -rf /usr/share/backgrounds/arcolinux
+		sudo rm -rf /usr/share/backgrounds/gnome
+		sudo pacman -Rns $(pacman -Qtdq) --noconfirm;
+            fi
+	fi
 }
+	
 
 function leave() {
 
