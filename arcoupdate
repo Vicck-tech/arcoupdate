@@ -90,7 +90,6 @@ function housekeeping() {
 		sudo rm -rf /usr/share/backgrounds/gnome
 		sudo pacman -Rns $(pacman -Qtdq) --noconfirm;
             fi
-	fi
 }
 	
 
