@@ -58,14 +58,14 @@ function skel() {
 function fix_bashrc() {
 
 	echo "Putting Bashrc back together."
-	echo "source ~/.fancy-user-bash.sh" >> ~/.bashrc-latest
+	echo "source ~/.fancy-user-bash.sh" >> /etc/skel/.bashrc
 	check_exit_status
 }
 
 # Copy over all new bashrc changes, including fix_bashrc
 function copy_over_newest_bashrc() {
 
-	cp ~/.bashrc-latest ~/.bashrc && source ~/.bashrc && sudo cp /etc/skel/.bashrc-latest /etc/skel/.bashrc;
+	sudo cp /etc/skel/.bashrc ~/.bashrc && source ~/.bashrc;
 	check_exit_status
 }
 
@@ -81,15 +81,15 @@ function aur_update() {
 function housekeeping() {
 	
 		echo
-		read -p "Are you ready to clean up? (y/n) " answer
+#		read -p "Are you ready to clean up? (y/n) " answer
 
-            if [ "$answer" == "y" ]
-            then
-                echo "Cleaning up."
-		sudo rm -rf /usr/share/backgrounds/arcolinux
-		sudo rm -rf /usr/share/backgrounds/gnome
+#            if [ "$answer" == "y" ]
+#            then
+        echo "Cleaning up."
+#		sudo rm -rf /usr/share/backgrounds/arcolinux
+#		sudo rm -rf /usr/share/backgrounds/gnome
 		sudo pacman -Rns $(pacman -Qtdq) --noconfirm;
-            fi
+#            fi
 }
 	
 
