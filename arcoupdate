@@ -58,7 +58,7 @@ function skel() {
 function fix_bashrc() {
 
 	echo "Putting Bashrc back together."
-	echo "source ~/.fancy-user-bash.sh" >> ~/.bashrc
+	echo "source ~/.fancy-user-bash.sh" >> /.bashrc
 	check_exit_status
 }
 
