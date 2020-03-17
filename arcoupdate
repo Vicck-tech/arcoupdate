@@ -50,7 +50,8 @@ function general_update() {
 function skel() {
 
 	echo "Running Skel."
-	cp -rf /etc/skel/. ~;
+#	cp -rf /etc/skel/. ~;
+	cp -Rf ~/.config ~/.config-backup-$(date +%Y.%m.%d-%H.%M.%S) && cp -rf /etc/skel/* ~;
 	check_exit_status
 }
 
@@ -58,7 +59,7 @@ function skel() {
 function fix_bashrc() {
 
 	echo "Putting Bashrc back together."
-	echo "source ~/.fancy-user-bash.sh" >> /.bashrc
+	echo 'source ~/.fancy-user-bash.sh' | sudo tee --append /etc/skel/.bashrc
 	check_exit_status
 }
 
@@ -122,7 +123,7 @@ mirror
 general_update
 skel
 fix_bashrc
-copy_over_newest_bashrc
+#copy_over_newest_bashrc
 aur_update
 housekeeping
 leave
